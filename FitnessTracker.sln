@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessTracker.Domain", "FitnessTracker.Domain\FitnessTracker.Domain.csproj", "{BD1AE987-1187-4ADA-8784-1DB7A417F06C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessTracker.Application", "FitnessTracker.Application\FitnessTracker.Application.csproj", "{50F26BAC-582F-42CE-A60A-2D1381D52DF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessTracker.Infrastructure", "FitnessTracker.Infrastructure\FitnessTracker.Infrastructure.csproj", "{5F8FE901-C4A2-4FAE-87CF-9525484713E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessTracker.API", "FitnessTracker.API\FitnessTracker.API.csproj", "{899FE101-EEE9-465F-B738-148754B4CCC4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD1AE987-1187-4ADA-8784-1DB7A417F06C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD1AE987-1187-4ADA-8784-1DB7A417F06C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD1AE987-1187-4ADA-8784-1DB7A417F06C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD1AE987-1187-4ADA-8784-1DB7A417F06C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50F26BAC-582F-42CE-A60A-2D1381D52DF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50F26BAC-582F-42CE-A60A-2D1381D52DF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50F26BAC-582F-42CE-A60A-2D1381D52DF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50F26BAC-582F-42CE-A60A-2D1381D52DF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F8FE901-C4A2-4FAE-87CF-9525484713E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F8FE901-C4A2-4FAE-87CF-9525484713E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F8FE901-C4A2-4FAE-87CF-9525484713E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F8FE901-C4A2-4FAE-87CF-9525484713E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{899FE101-EEE9-465F-B738-148754B4CCC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{899FE101-EEE9-465F-B738-148754B4CCC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{899FE101-EEE9-465F-B738-148754B4CCC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{899FE101-EEE9-465F-B738-148754B4CCC4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
