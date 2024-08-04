@@ -1,24 +1,32 @@
 ﻿using System.Text.RegularExpressions;
+using FitnessTracker.Domain.Errors;
+using FluentResults;
+using SharedKernel.Errors;
 
 namespace FitnessTracker.Domain.Users;
 
 public record Email
 {
     private const string EmailRegexPattern = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
-    private bool IsEmailValid(string email) => Regex.Matches(email, EmailRegexPattern, RegexOptions.IgnoreCase).Count > 0;
-    public string EmailValue { get; private set; }
+    public string Value { get; private set; }
+    private static bool IsEmailValid(string email) => Regex.Matches(email, EmailRegexPattern, RegexOptions.IgnoreCase).Count > 0;
 
-    public Email(string emailValue)
+    public static Result<Email> Create(string email)
     {
-        if (string.IsNullOrEmpty(emailValue))
+        if (string.IsNullOrEmpty(email))
         {
-            ArgumentException.ThrowIfNullOrEmpty(nameof(emailValue));
+            return Result.Fail(new NullOrEmptyError(nameof(email)));
         }
         
-        if (!IsEmailValid(emailValue))
+        if (!IsEmailValid(email))
         {
-            throw new ArgumentException("Email have not correct pattern", nameof(emailValue));
+            return Result.Fail(new EmailNotValidError(email));
         }
-        EmailValue = emailValue;
+
+        return Result.Ok(new Email(email));
+    }
+    private Email(string value)
+    {
+        Value = value;
     }
 }

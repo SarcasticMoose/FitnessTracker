@@ -1,5 +1,8 @@
-﻿using FitnessTracker.Domain.Users;
+﻿using FitnessTracker.Domain.Errors;
+using FitnessTracker.Domain.Events;
+using FitnessTracker.Domain.Users;
 using FluentAssertions;
+using SharedKernel.Errors;
 
 namespace FitnessTracker.Domain.UnitTests.User;
 
@@ -10,24 +13,26 @@ public class EmailTests
     [InlineData("testEmail@")]
     [InlineData("testEmail@wp.")]
     [InlineData("testEmail@wp.p")]
-    public void Email_WithInvalidButNotNullValue_ShouldThrowArgumentException(string email)
+    public void Email_WithInvalidButNotNullValue_ShouldReturnFailedAndHaveEmailNotValidError(string email)
     {
-        Action emailAction = () =>
-        {
-            _ = new Email(email);
-        };
-        emailAction.Should().Throw<ArgumentException>();
+        var emailString = Email.Create(email);
+
+        emailString
+            .Errors.Should()
+            .ContainSingle(error => error is EmailNotValidError);
+        emailString.IsFailed.Should().BeTrue();
     }
-    
+
     [Theory]
     [InlineData(null)]
-    public void Email_WithInvalidNullValue_ShouldThrowArgumentException(string email)
+    [InlineData("")]
+    public void Email_NullValue_ShouldReturnFailedAndHaveNullOrEmptyError(string email)
     {
-        Action emailAction = () =>
-        {
-            _ = new Email(email);
-        };
-        emailAction.Should().Throw<ArgumentNullException>();
+        var emailString = Email.Create(email);
+
+        emailString
+            .Errors.Should()
+            .ContainSingle(error => error is NullOrEmptyError);
+        emailString.IsFailed.Should().BeTrue();
     }
-    
 }
