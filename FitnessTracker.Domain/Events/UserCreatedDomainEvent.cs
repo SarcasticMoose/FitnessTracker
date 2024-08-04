@@ -2,8 +2,8 @@
 
 namespace FitnessTracker.Domain.Events;
 
-public class UserCreatedDomainEvent() : IDomainEvent
+public record UserCreatedDomainEvent : IDomainEvent
 {
-    public Guid Id { get; } = new Guid();
+    public Ulid Id { get; } = new();
     public DateTime CreationDate { get; } = DateTime.Now;
 }

@@ -1,20 +1,28 @@
-﻿namespace FitnessTracker.Domain.Users;
+﻿using FluentResults;
+using SharedKernel.Errors;
+
+namespace FitnessTracker.Domain.Users;
 
 public record Name
 {
     public string FirstName { get; private set; }
     public string SecondName { get; private set; }
 
-    public Name(string firstName, string secondName)
+    public static Result<Name> Create(string firstName, string secondName)
     {
         if (string.IsNullOrEmpty(firstName))
         {
-            ArgumentException.ThrowIfNullOrEmpty(nameof(firstName));
+            return Result.Fail(new NullOrEmptyError(nameof(firstName)));
         }
         if (string.IsNullOrEmpty(secondName))
         {
-            ArgumentException.ThrowIfNullOrEmpty(nameof(secondName));
+            return Result.Fail(new NullOrEmptyError(nameof(secondName)));
         }
+        return Result.Ok(new Name(firstName, secondName));
+    }
+    
+    private Name(string firstName, string secondName)
+    {
         FirstName = firstName;
         SecondName = secondName;
     }
