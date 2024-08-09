@@ -18,7 +18,7 @@ public class EmailTests
         emailString
             .Errors.Should()
             .ContainSingle(error => error is Error)
-            .Which.Message.Should().Be($"Argument {nameof(email)} is empty or null");
+            .Which.Message.Should().Be(EmailErrors.EmailInvalidPattern(email).Message);
         emailString.IsFailed.Should().BeTrue();
     }
 
@@ -32,7 +32,7 @@ public class EmailTests
         emailString
             .Errors.Should()
             .ContainSingle(error => error is Error)
-            .Which.Should().Be(EmailErrors.EmailInvalidPattern(email));
+            .Which.Message.Should().Be(EmailErrors.EmailNullOrEmpty().Message);
         emailString.IsFailed.Should().BeTrue();
     }
 }

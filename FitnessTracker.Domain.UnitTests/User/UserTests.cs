@@ -1,5 +1,5 @@
-﻿using FitnessTracker.Domain.Events;
-using FitnessTracker.Domain.Users;
+﻿using FitnessTracker.Domain.Users;
+using FitnessTracker.Domain.Users.Events;
 using FluentAssertions;
 using static FitnessTracker.Domain.Users.User;
 

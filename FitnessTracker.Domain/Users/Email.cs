@@ -8,7 +8,9 @@ public record Email
 {
     private const string EmailRegexPattern = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
     public string Value { get; private set; }
-    private static bool IsEmailValid(string email) => Regex.Matches(email, EmailRegexPattern, RegexOptions.IgnoreCase).Count > 0;
+
+    private static bool IsEmailValid(string email) =>
+        Regex.Matches(email, EmailRegexPattern, RegexOptions.IgnoreCase).Count > 0;
 
     public static Result<Email> Create(string email)
     {
@@ -16,7 +18,7 @@ public record Email
         {
             return Result.Fail(EmailErrors.EmailNullOrEmpty());
         }
-        
+
         if (!IsEmailValid(email))
         {
             return Result.Fail(EmailErrors.EmailInvalidPattern(email));
@@ -24,6 +26,7 @@ public record Email
 
         return Result.Ok(new Email(email));
     }
+
     private Email(string value)
     {
         Value = value;

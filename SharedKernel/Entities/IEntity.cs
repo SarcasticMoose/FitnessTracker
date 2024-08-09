@@ -1,6 +1,8 @@
-﻿namespace SharedKernel.Entities;
+﻿using SharedKernel.Events;
 
-public interface IEntity<out TId>
+namespace SharedKernel.Entities;
+
+public interface IEntity
 {
-    public TId Id { get; }
+    IReadOnlyCollection<IDomainEvent> DomainEvents { get; }
 }
