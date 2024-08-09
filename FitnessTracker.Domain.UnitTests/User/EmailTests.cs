@@ -1,8 +1,6 @@
-﻿using FitnessTracker.Domain.Errors;
-using FitnessTracker.Domain.Events;
-using FitnessTracker.Domain.Users;
+﻿using FitnessTracker.Domain.Users;
 using FluentAssertions;
-using SharedKernel.Errors;
+using FluentResults;
 
 namespace FitnessTracker.Domain.UnitTests.User;
 
@@ -19,7 +17,8 @@ public class EmailTests
 
         emailString
             .Errors.Should()
-            .ContainSingle(error => error is EmailNotValidError);
+            .ContainSingle(error => error is Error)
+            .Which.Message.Should().Be($"Argument {nameof(email)} is empty or null");
         emailString.IsFailed.Should().BeTrue();
     }
 
@@ -32,7 +31,8 @@ public class EmailTests
 
         emailString
             .Errors.Should()
-            .ContainSingle(error => error is NullOrEmptyError);
+            .ContainSingle(error => error is Error)
+            .Which.Should().Be(EmailErrors.EmailInvalidPattern(email));
         emailString.IsFailed.Should().BeTrue();
     }
 }

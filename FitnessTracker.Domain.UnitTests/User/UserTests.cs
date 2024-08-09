@@ -9,11 +9,11 @@ public class UserTests
 {
     private Users.User CreateValidUser()
     {
+        var userId = new UserId(Ulid.NewUlid());
         var name = Name.Create("Jan", "Kowalski");
         var email = Email.Create("jan.kowalski@gmail.com");
-        var id = Ulid.NewUlid();
         
-        return Create(id,name.Value,email.Value);
+        return Create(userId,name.Value,email.Value);
     }
     
     [Fact]
@@ -27,8 +27,7 @@ public class UserTests
     public void Create_User_ShouldRaiseUserCreatedDomainEvent()
     {
         var user = CreateValidUser();
-        user.DomainEvents
-            .Should()
+        user.DomainEvents.Should()
             .NotBeNull()
             .And.NotBeEmpty()
             .And.HaveCount(1)
