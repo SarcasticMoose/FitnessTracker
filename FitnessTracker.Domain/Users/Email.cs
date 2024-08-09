@@ -1,7 +1,6 @@
 ﻿using System.Text.RegularExpressions;
-using FitnessTracker.Domain.Errors;
 using FluentResults;
-using SharedKernel.Errors;
+using SharedKernel;
 
 namespace FitnessTracker.Domain.Users;
 
@@ -15,12 +14,12 @@ public record Email
     {
         if (string.IsNullOrEmpty(email))
         {
-            return Result.Fail(new NullOrEmptyError(nameof(email)));
+            return Result.Fail(EmailErrors.EmailNullOrEmpty());
         }
         
         if (!IsEmailValid(email))
         {
-            return Result.Fail(new EmailNotValidError(email));
+            return Result.Fail(EmailErrors.EmailInvalidPattern(email));
         }
 
         return Result.Ok(new Email(email));
