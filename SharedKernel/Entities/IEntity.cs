@@ -4,5 +4,5 @@ namespace SharedKernel.Entities;
 
 public interface IEntity
 {
-    IReadOnlyCollection<IDomainEvent> DomainEvents { get; }
+    public Ulid Id { get; set; }
 }

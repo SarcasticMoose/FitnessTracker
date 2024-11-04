@@ -3,16 +3,14 @@ using SharedKernel.Events;
 
 namespace FitnessTracker.Domain.Followers.Events;
 
-public class FollowerCreatedDomainEvent : IDomainEvent
+public class FollowerCreatedDomainEvent : DomainEvent
 {
-    public FollowerCreatedDomainEvent(UserId userId, UserId followedId)
+    public FollowerCreatedDomainEvent(FollowerId followerId, FolloweeId followeeId)
     {
-        UserId = userId;
-        FollowedId = followedId;
+        FollowerId = followerId;
+        FolloweeId = followeeId;
     }
-
-    public Ulid Id { get; } = Ulid.NewUlid();
-    public DateTime CreatedOnUTC { get; } = DateTime.Now;
-    public UserId UserId { get; private set; }
-    public UserId FollowedId { get; private set; }
+    
+    public FollowerId FollowerId { get; private set; }
+    public FolloweeId FolloweeId { get; private set; }
 }

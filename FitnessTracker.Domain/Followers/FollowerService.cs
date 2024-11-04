@@ -12,7 +12,7 @@ public sealed class FollowerService : IFollowerService
         _followerRepository = followerRepository;
     }
 
-    public async Task<Result> StartFollowUserAsync(User user, User follower, CancellationToken ct = default)
+    public async Task<Result> StartFollowingUserAsync(User user, User follower, CancellationToken ct = default)
     {
         if (user.Id == follower.Id)
         {
@@ -24,8 +24,22 @@ public sealed class FollowerService : IFollowerService
             return FollowerErrors.UserIsFollowed();
         }
 
-        var newFollower = Follower.Create(user.Id, follower.Id,DateTime.Now);
+        return await _followerRepository.Insert(Follower.Create(user.Id, follower.Id, DateTime.Now),ct);
+    }
 
-        return Result.Ok();
+    public async Task<Result> StopFollowingUserAsync(User user, User follower, CancellationToken ct = default)
+    {
+        if (user.Id == follower.Id)
+        {
+            return FollowerErrors.UserAndFollowerIdEquals();
+        }
+
+        if (!await _followerRepository.IsUserFollowedAsync(user.Id, follower.Id, ct))
+        {
+            return FollowerErrors.UserIsNotFollowed();
+        }
+
+        Follower followerGetResult  = await _followerRepository.GetFollowerById(user.Id,follower.Id,ct);
+        return await _followerRepository.Delete(new FollowerId(followerGetResult.Id.Id));
     }
 }

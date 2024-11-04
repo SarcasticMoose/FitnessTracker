@@ -1,17 +1,16 @@
 ﻿using FitnessTracker.Domain.Users.Events;
-using SharedKernel.Entities;
+using SharedKernel.Aggregates;
 
 namespace FitnessTracker.Domain.Users;
 
-public class User : Entity
+public class User : AggregateRoot
 {
     private User(UserId id, Name name, Email email)
     {
         Id = id;
         Name = name;
         Email = email;
-    }
-
+    } 
     public UserId Id { get; private set; }
     public Name Name { get; private set; }
     public Email Email { get; private set; }
@@ -22,4 +21,9 @@ public class User : Entity
         user.RaiseDomainEvent(new UserCreatedDomainEvent());
         return user;
     }
+}
+
+public record UserId
+{
+    public Ulid Value = Ulid.NewUlid();
 }

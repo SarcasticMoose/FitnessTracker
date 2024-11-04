@@ -10,11 +10,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessTracker.Application"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessTracker.Domain", "FitnessTracker.Domain\FitnessTracker.Domain.csproj", "{1DA60FAE-E2A8-4EEC-B9D7-CCC51E754E09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessTracker.Infrastructure", "FitnessTracker.Infrastructure\FitnessTracker.Infrastructure.csproj", "{BEF4223D-FA63-4ABF-AF8E-72DEC0C3F5F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessTracker.Persistance", "FitnessTracker.Persistance\FitnessTracker.Persistance.csproj", "{BEF4223D-FA63-4ABF-AF8E-72DEC0C3F5F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedKernel", "SharedKernel\SharedKernel.csproj", "{2026FFAD-354B-42F2-B3F2-D1B27100C4A1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessTracker.API", "FitnessTracker.API\FitnessTracker.API.csproj", "{EF0395EB-4980-41C7-A28F-334875ED7336}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessTracker.Infrastructure", "FitnessTracker.Infrastructure\FitnessTracker.Infrastructure.csproj", "{9450553E-417B-4799-871E-A8E52283CD9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,6 +48,10 @@ Global
 		{EF0395EB-4980-41C7-A28F-334875ED7336}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF0395EB-4980-41C7-A28F-334875ED7336}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF0395EB-4980-41C7-A28F-334875ED7336}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9450553E-417B-4799-871E-A8E52283CD9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9450553E-417B-4799-871E-A8E52283CD9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9450553E-417B-4799-871E-A8E52283CD9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9450553E-417B-4799-871E-A8E52283CD9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B256EA49-408F-4327-A798-AD0B3F4E8D67} = {BCD34F98-CB96-4DCC-A9EA-F9B648108C6E}
@@ -54,5 +60,6 @@ Global
 		{BEF4223D-FA63-4ABF-AF8E-72DEC0C3F5F3} = {F7D5F855-F22D-4F82-A559-7F94C3CF70C4}
 		{2026FFAD-354B-42F2-B3F2-D1B27100C4A1} = {F7D5F855-F22D-4F82-A559-7F94C3CF70C4}
 		{EF0395EB-4980-41C7-A28F-334875ED7336} = {F7D5F855-F22D-4F82-A559-7F94C3CF70C4}
+		{9450553E-417B-4799-871E-A8E52283CD9C} = {F7D5F855-F22D-4F82-A559-7F94C3CF70C4}
 	EndGlobalSection
 EndGlobal

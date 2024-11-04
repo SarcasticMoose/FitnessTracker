@@ -5,5 +5,4 @@ namespace SharedKernel.Events;
 public interface IDomainEvent : INotification
 {
     public Ulid Id { get; }
-    public DateTime CreatedOnUTC { get; }
 }

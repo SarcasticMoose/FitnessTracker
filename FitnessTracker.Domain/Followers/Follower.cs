@@ -1,28 +1,30 @@
 using FitnessTracker.Domain.Followers.Events;
 using FitnessTracker.Domain.Users;
+using SharedKernel.Aggregates;
 using SharedKernel.Entities;
 
 namespace FitnessTracker.Domain.Followers;
 
-public sealed class Follower : Entity
+public sealed class Follower : AggregateRoot
 {
-    public UserId UserId { get; private set; }
-
-    public UserId FollowedId { get; private set; }
-
+    public FollowerId Id { get; private set; }
+    public FolloweeId FolloweeId { get; private set; }
     public DateTime CreatedOn { get; private set; }
 
-    private Follower(UserId userId, UserId followedId, DateTime createdOn)
+    private Follower(FollowerId followerId, FolloweeId followeeId, DateTime createdOn)
     {
-        UserId = userId;
-        FollowedId = followedId;
+        Id = followerId;
+        FolloweeId = followeeId;
         CreatedOn = createdOn;
     }
 
-    internal static Follower Create(UserId userId, UserId followedId, DateTime createOnUtc)
+    internal static Follower Create(FollowerId followerId, FolloweeId followeeId, DateTime createOnUtc)
     {
-        var follower = new Follower(userId, followedId, createOnUtc);
-        follower.RaiseDomainEvent(new FollowerCreatedDomainEvent(userId, followedId));
+        var follower = new Follower(followerId,followeeId, createOnUtc);
+        follower.RaiseDomainEvent(new FollowerCreatedDomainEvent(followerId, followeeId));
         return follower;
     }
 }
+
+public record FollowerId(Ulid Id);
+public record FolloweeId(Ulid Id);
